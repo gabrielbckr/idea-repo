@@ -31,3 +31,22 @@
     transform: rotate(360deg);
   }
 }
+
+.pagesDiv {
+    padding: 50px;
+}
+
+.ideaCard { 
+  margin: 30px;
+  width: 90%;
+  flex-grow: 0.6;
+}
+.MuiPaper-root{
+  flex-grow: 0.6;
+  margin: 30px;
+  width: 90%;
+}
+
+.MuiPaper-root:hover{
+  transform: scale(1.1);
+}
