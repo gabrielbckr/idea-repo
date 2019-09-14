@@ -6,9 +6,14 @@ import {AppBar, Typography , Toolbar, Tab, Tabs} from '@material-ui/core';
 import {ideas} from './ideas'
 
 class App extends Component {
-
+    constructor(props) {
+        super(props)
+        this.state = {
+            filterKey: ""
+        };
+    }
     render() {
-
+        
         return (
             <div className="App">
                 <AppBar>
@@ -27,7 +32,7 @@ class App extends Component {
                 </AppBar>
                 <div className={"pagesDiv"}>
                     <IdeaSeeder/>
-                    <IdeaShower ideas={ideas}/>
+                    <IdeaShower filterKey={" "} ideas={ideas}/>
                 </div>
             </div>
             
