@@ -39,7 +39,6 @@
 .ideaCard.MuiPaper-root { 
   margin: 30px;
   width: 90%;
-  flex-grow: 0.6;
 }
 /* .MuiPaper-root{
   flex-grow: 0.6;
@@ -55,7 +54,7 @@
   background-image: url('./blueprint.jpg'); 
 }
 
-.ideasContainer.MuiPaper-root::after{
+/* .ideasContainer.MuiPaper-root::after{
   filter: blur(100px); 
   filter: brightness(10%);
-}
+} */
