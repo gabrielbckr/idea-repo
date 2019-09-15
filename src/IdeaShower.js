@@ -3,18 +3,21 @@ import { Card, CardContent, Typography } from '@material-ui/core';
 import { Container, Paper, Input} from '@material-ui/core';
 
 class IdeaShower extends Component {
+    constructor(){
+        super()
+        this.state = {
+            filterKey: ''  
+        }
+    }
+
     handleChange = (e) => {
-        console.log(e.target.value);
         this.setState({
             filterKey: e.target.value
         });
     }
 
     renderIdeas(ideas)  {
-        let filteredIdeas = this.props.filterKey ? ideas.filter( c => 
-            c.title.toLowerCase().includes(this.props.filterKey.toLowerCase()) 
-        ) : ideas;
-        return filteredIdeas.map( (idea, i) => {
+        return ideas.map( (idea, i) => {
             return(
                 <Card key={i} className={"ideaCard"}>
                     <CardContent>
@@ -32,18 +35,20 @@ class IdeaShower extends Component {
     }
 
     render() {
-        
+        let filteredIdeas = this.state.filterKey ? this.props.ideas.filter( c => {
+            return c.title.toLowerCase().includes(this.state.filterKey.toLowerCase()) 
+        }) : this.props.ideas;
         return (
-            <Container>
-                <Paper className={'ideasContainer'}>
-                <h4 style={{color: 'lightblue'}} >IdeaShower</h4>
+
+            <Container >
+                <Paper className={'ideasContainer'}  style={{paddingBottom : '30px'}}>
+                <h4 style={{color: 'darkblue'}} >IdeaShower</h4>
                 <Input
                     placeholder="Find an idea"
-                    inputProps={{
-                        'aria-label': 'filter'}}
+                    inputProps={{'aria-label': 'filter'}}
                     onChange={this.handleChange}
                 />
-                {this.renderIdeas(this.props.ideas)}
+                {this.renderIdeas(filteredIdeas)}
                 </Paper>
             </Container>
         );

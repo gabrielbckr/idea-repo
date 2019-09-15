@@ -33,7 +33,8 @@
 }
 
 .pagesDiv {
-    padding: 50px;
+  padding: 50px;
+  background-image: url('./blueprint.jpg'); 
 }
 
 .ideaCard.MuiPaper-root { 
@@ -48,11 +49,11 @@
 
 .ideaCard.MuiPaper-root:hover{
   transform: scale(1.1);
+  background-color: hsl(199, 100%, 99%);
 }
 
-.ideasContainer.MuiPaper-root{
-  background-image: url('./blueprint.jpg'); 
-}
+/* .ideasContainer.MuiPaper-root{
+} */
 
 /* .ideasContainer.MuiPaper-root::after{
   filter: blur(100px); 

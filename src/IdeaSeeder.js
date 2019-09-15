@@ -13,10 +13,10 @@ class IdeaSeeder extends Component {
 
     render() {
         return (
-            <Container>
+            <Container >
 
-            <Paper>
-                <h4>Create Idea</h4>
+            <Paper style={{paddingBottom: '30px'}}>
+                <h4 style={{color: 'darkblue'}} >Create Idea</h4>
                     <div>
                 <FormControl>
                         description <TextField type={'string'} name={'c1'} />
