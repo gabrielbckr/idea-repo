@@ -8,7 +8,7 @@ class IdeaShower extends Component {
     renderIdeas(ideas)  {
         return ideas.map(idea => {
             return(
-                <Card classname={"ideaCard"}>
+                <Card className={"ideaCard"}>
                     <CardContent>
                         <Typography style={{color: 'grey'}}>
                             {idea.title}
@@ -25,7 +25,7 @@ class IdeaShower extends Component {
     render() {
         return (
             <Container>
-                <Paper>
+                <Paper className={'ideasContainer'}>
                 <h4 style={{color: 'lightblue'}} >IdeaShower</h4>
                 {this.renderIdeas(this.props.ideas)}
                 </Paper>

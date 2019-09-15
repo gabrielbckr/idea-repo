@@ -36,17 +36,26 @@
     padding: 50px;
 }
 
-.ideaCard { 
+.ideaCard.MuiPaper-root { 
   margin: 30px;
   width: 90%;
   flex-grow: 0.6;
 }
-.MuiPaper-root{
+/* .MuiPaper-root{
   flex-grow: 0.6;
-  margin: 30px;
+  margin-top: 30px;
   width: 90%;
+} */
+
+.ideaCard.MuiPaper-root:hover{
+  transform: scale(1.1);
 }
 
-.MuiPaper-root:hover{
-  transform: scale(1.1);
+.ideasContainer.MuiPaper-root{
+  background-image: url('./blueprint.jpg'); 
+}
+
+.ideasContainer.MuiPaper-root::after{
+  filter: blur(100px); 
+  filter: brightness(10%);
 }
