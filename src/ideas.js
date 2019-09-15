@@ -2,6 +2,12 @@ export const ideas = [
     {
         id: 'jhgdhf',
         title: 'Martim\'s had an idea',
+        description: 'Prevent solar heating panel from breaking',
+        wholeIdea: 'Remotly turn on pump to remove water from solar heating panel when the day is cold enough to freeze water inside it, preveting it from bursting'
+    },
+    {
+        id: 'jhgdhf',
+        title: 'Idea da Rosana',
         description: 'dsiuhjdshfakjhfds',
         wholeIdea: 'sdafhuasdihfisdhfuihaduisfhsadifuasdgiufgisdaugfiuagdsiufgiuaosdgfiugsdiufg'
     },
