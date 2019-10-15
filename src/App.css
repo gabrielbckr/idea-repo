@@ -7,6 +7,7 @@ body{
 }
 
 .pagesDiv {
+  position: relative;
   padding: 5%;
 }
 
