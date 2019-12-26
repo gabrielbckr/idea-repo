@@ -1,33 +1,64 @@
 import React, { Component } from 'react';
-import { Input, FormControl, TextField } from '@material-ui/core';
+import { Input, TextField, Button } from '@material-ui/core';
 import { Container , Paper  } from '@material-ui/core';
-// import { Editor } from 'react-draft-wysiwyg';
 
 
 class IdeaSeeder extends Component {
-    state = {}
-
-    handleSaveButtonClick = () => {
-
+    state = {
+        description: "", contact: "", title: "", wholeIdea: ""
     }
+
+    handleClickSaveButton = () => {
+        const {title, desc, contact, wholeIdea} = this.state
+        this.sendNewIdea(title, desc, contact, wholeIdea);
+        this.props.closeIdeaSeeder()
+    }
+
+    sendNewIdea = (title, desc, contact, wholeIdea) => {
+        return fetch('http://127.0.0.1:5000/add-idea', {
+            method: 'POST',
+            mode: "cors",
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({title, desc, contact, wholeIdea}),
+          });
+      }
+
+      handleChange = (e) => {
+        this.setState({[e.target.name]: e.target.value});
+      }
 
     render() {
         return (
-            <Container >
-
+            <Container style={{paddingTop: '25px'}}>
             <Paper style={{paddingBottom: '30px'}}>
-                <h4 style={{color: 'darkblue'}} >Create Idea</h4>
+            <h4 style={{color: 'darkblue'}} >Create Idea</h4>
+            <form>
+                    <div><TextField name="title" 
+                                onChange={this.handleChange} 
+                                value={this.state.title} 
+                                label="Title" /></div>
+                    <div><TextField name="contact" 
+                                onChange={this.handleChange} 
+                                value={this.state.contact}
+                                label="Contact"  /></div>
+                    <div><TextField name="description" 
+                                onChange={this.handleChange} 
+                                value={this.state.description}
+                                label="Description"  /></div>
+                    <div><TextField name="wholeIdea" 
+                                onChange={this.handleChange} 
+                                value={this.state.wholeIdea}
+                                label="Whole Idea"  /></div>
                     <div>
-                <FormControl>
-                        description <TextField type={'string'} name={'c1'} />
-                </FormControl>
+                        <Button label="Send Idea" 
+                                  onClick={this.handleClickSaveButton}>
+                            Send
+                        </Button>
                     </div>
-                    <div>
-                <FormControl>
-                        contact <Input type={'string'} name={'c2'} />
-                </FormControl>
-                    </div>
-                    <Input type={'submit'} value={'Register Idea'} />
+            </form>
             </Paper>
             </Container>
         );
