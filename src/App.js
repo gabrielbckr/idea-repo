@@ -3,23 +3,24 @@ import './App.css';
 import IdeaSeeder from './IdeaSeeder';
 import IdeaShower from './IdeaShower';
 import {AppBar, Typography , Toolbar, Tab, Tabs} from '@material-ui/core';
-import {ideas} from './ideas'
+// import {ideas} from './ideas'
+import axios from 'axios';
 
 class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
             filterKey: "",
-            page: 'ideaShower'
+            page: 'ideaShower',
+            ideas: []
         };
     }
     
 
-//   componentDidMount(){
-//     fetch('http://jsonplaceholder.typicode.com/users')
-//     .then(response=> response.json())
-//     .then(users=> this.setState({robots: users }));
-//   }
+  componentDidMount(){
+    axios.get("http://127.0.0.1:5000/get-ideas")
+    .then(response => this.setState({ideas: response.data}));
+  }
 
     render() {
         
@@ -40,8 +41,10 @@ class App extends Component {
                     </Toolbar>
                 </AppBar>
                 <div className={"pagesDiv"}>
-                    { this.state.page==='ideaSeeder'? <IdeaSeeder/> : ''}
-                    <IdeaShower filterKey={" "} ideas={ideas}/>
+                    { this.state.page==='ideaSeeder'? 
+                        <IdeaSeeder closeIdeaSeeder={() => {this.setState({page:'ideaShower'})}}/> : ''
+                    }
+                    <IdeaShower filterKey={this.state.filterKey} ideas={this.state.ideas}/>
                 </div>
             </div>
             
