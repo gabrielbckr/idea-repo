@@ -2,27 +2,25 @@ import React, { Component } from 'react';
 import { Input, TextField, Button } from '@material-ui/core';
 import { Container , Paper  } from '@material-ui/core';
 
-
 class IdeaSeeder extends Component {
     state = {
         description: "", contact: "", title: "", wholeIdea: ""
     }
 
     handleClickSaveButton = () => {
-        const {title, desc, contact, wholeIdea} = this.state
-        this.sendNewIdea(title, desc, contact, wholeIdea);
+        const {title, description, contact, wholeIdea} = this.state
+        this.sendNewIdea(title, description, contact, wholeIdea);
         this.props.closeIdeaSeeder()
     }
 
-    sendNewIdea = (title, desc, contact, wholeIdea) => {
-        return fetch('http://127.0.0.1:5000/add-idea', {
+    sendNewIdea = async (title, description, contact, wholeIdea) => {
+       fetch('http://127.0.0.1:5000/add-idea', {
             method: 'POST',
             mode: "cors",
             headers: {
-              Accept: 'application/json',
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({title, desc, contact, wholeIdea}),
+            body: JSON.stringify({title, description, contact, wholeIdea}),
           });
       }
 
